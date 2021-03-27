@@ -49,6 +49,7 @@ else {
 
 // Write password to the #password input
 
+
 function generatepassword() { 
   
   var randomLowerUpperSpecialNum  = lowerUpperSpecialNum [Math.floor(Math.random()* lowerUpperSpecialNum.length)]
