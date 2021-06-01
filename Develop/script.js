@@ -22,6 +22,7 @@ var lowerUpperspecial = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n"
 var lowerNumSpecial = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","0","!","@","#","$","%","^","&","*","?",".",",","_"]
 var lowerUpperSpecialNum= ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","!","@","#","$","%","^","&","*","?",".",",","_","1","2","3","4","5","6","7","8","9","0"]
 
+var passwordText = document.querySelector("#password");
 
 
 //capsBoolean
@@ -50,21 +51,23 @@ else {
 // Write password to the #password input
 
 
-function generatepassword() { 
+function generatePassword() { 
   
-  var randomLowerUpperSpecialNum  = lowerUpperSpecialNum [Math.floor(Math.random()* lowerUpperSpecialNum.length)]
-  var randomLowerUpperSpecial = lowerUpperspecial [Math.floor(Math.random()* lowerUpperspecial.length)]
-  var randomLowerUpperNum = lowerUpperNum [Math.floor(Math.random()* lowerUpperNum.length)]
-  var randomLowerNumSpecial = lowerNumSpecial [Math.floor(Math.random()* lowerNumSpecial.length)]
-  var randomLowerSpecial = lowerSpecial [Math.floor(Math.random()* lowerSpecial.length)]
-  var randomLowerNumber = lowerNumber [Math.floor(Math.random()* lowerNumber.length)]
-  var randomLowerUpper = lowerUpper [Math.floor(Math.random()* lowerUpper.length)]
-  var randomLowerLetters = lowerLetters [Math.floor(Math.random()* lowerLetters.length)]
+  // var randomLowerUpperSpecialNum  = lowerUpperSpecialNum [Math.floor(Math.random()* lowerUpperSpecialNum.length)]
+  // var randomLowerUpperSpecial = lowerUpperspecial [Math.floor(Math.random()* lowerUpperspecial.length)]
+  // var randomLowerUpperNum = lowerUpperNum [Math.floor(Math.random()* lowerUpperNum.length)]
+  // var randomLowerNumSpecial = lowerNumSpecial [Math.floor(Math.random()* lowerNumSpecial.length)]
+  // var randomLowerSpecial = lowerSpecial [Math.floor(Math.random()* lowerSpecial.length)]
+  // var randomLowerNumber = lowerNumber [Math.floor(Math.random()* lowerNumber.length)]
+  // var randomLowerUpper = lowerUpper [Math.floor(Math.random()* lowerUpper.length)]
+  // var randomLowerLetters = lowerLetters [Math.floor(Math.random()* lowerLetters.length)]
   
-  var passArray=[""]
-
+  var passArray=[]
+  
+// if statements for the parameters that you give it
   if ( capsBool == true && specialBool == true && numBool == true ) { 
     for (i=0; i<passlength; i++) {
+      var randomLowerUpperSpecialNum  = lowerUpperSpecialNum [Math.floor(Math.random()* lowerUpperSpecialNum.length)]
 
       passArray.splice(0,0,randomLowerUpperSpecialNum)
       
@@ -72,6 +75,7 @@ function generatepassword() {
 
   } else if ( capsBool == true && specialBool == true && numBool == false ) { 
     for (i=0; i<passlength; i++) {
+      var randomLowerUpperSpecial = lowerUpperspecial [Math.floor(Math.random()* lowerUpperspecial.length)]
 
       passArray.splice(0,0,randomLowerUpperSpecial)
       
@@ -79,6 +83,7 @@ function generatepassword() {
   }
   else if ( capsBool == true && specialBool == false && numBool == true ) { 
     for (i=0; i<passlength; i++) {
+      var randomLowerUpperNum = lowerUpperNum [Math.floor(Math.random()* lowerUpperNum.length)]
 
       passArray.splice(0,0,randomLowerUpperNum)
       
@@ -86,6 +91,7 @@ function generatepassword() {
   }
   else if ( capsBool == false && specialBool == true && numBool == true ) { 
     for (i=0; i<passlength; i++) {
+      var randomLowerNumSpecial = lowerNumSpecial [Math.floor(Math.random()* lowerNumSpecial.length)]
 
       passArray.splice(0,0,randomLowerNumSpecial)
       
@@ -93,6 +99,7 @@ function generatepassword() {
   }
   else if ( capsBool == false && specialBool == true && numBool == false ) { 
     for (i=0; i<passlength; i++) {
+      var randomLowerSpecial = lowerSpecial [Math.floor(Math.random()* lowerSpecial.length)]
 
       passArray.splice(0,0,randomLowerSpecial)
       
@@ -100,6 +107,7 @@ function generatepassword() {
   }
   else if ( capsBool == false && specialBool == false && numBool == true ) { 
     for (i=0; i<passlength; i++) {
+      var randomLowerNumber = lowerNumber [Math.floor(Math.random()* lowerNumber.length)]
 
       passArray.splice(0,0,randomLowerNumber)
       
@@ -107,6 +115,7 @@ function generatepassword() {
   }
   else if ( capsBool == true && specialBool == false && numBool == false ) { 
     for (i=0; i<passlength; i++) {
+      var randomLowerUpper = lowerUpper [Math.floor(Math.random()* lowerUpper.length)]
 
       passArray.splice(0,0,randomLowerUpper)
       
@@ -114,28 +123,19 @@ function generatepassword() {
   }
   else if ( capsBool == false && specialBool == false && numBool == false ) { 
     for (i=0; i<passlength; i++) {
+      var randomLowerLetters = lowerLetters [Math.floor(Math.random()* lowerLetters.length)]
 
       passArray.splice(0,0,randomLowerLetters)
       
     }
   }
-  var stringPassword = passArray.toString 
-  stringpassword = stringPassword.replace (",","")
-}
-
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-  
+  var stringPassword = passArray.join("")
+  // stringPassword = stringPassword.replace (",","")
+  passwordText.innerHTML = stringPassword
+  console.log(stringPassword)
 
 }
+
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword());
-
-
-
-
-   
+generateBtn.addEventListener("click", generatePassword());
